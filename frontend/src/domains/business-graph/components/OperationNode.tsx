@@ -31,7 +31,7 @@ function OperationNodeImpl({ data, selected }: NodeProps) {
             <Handle
                 type="source"
                 position={Position.Right}
-                className="!h-2.5 !w-2.5 !border-border-strong !bg-accent-green"
+                className="!h-2.5 !w-2.5 !border-border-strong !bg-brand"
             />
         </div>
     )

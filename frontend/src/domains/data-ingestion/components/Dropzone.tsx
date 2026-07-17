@@ -51,11 +51,11 @@ export function Dropzone({ onFile }: Props) {
       <div
         {...getRootProps()}
         className={cn(
-          'flex cursor-pointer flex-col items-center justify-center gap-4 rounded-card border-2 border-dashed px-6 py-12 text-center transition-colors',
-          'bg-bg-elevated/40',
+          'flex cursor-pointer flex-col items-center justify-center gap-5 rounded-card border-2 border-dashed px-6 py-16 text-center transition-colors',
+          'bg-surface-card shadow-card',
           isDragActive && !isDragReject
-            ? 'border-accent-green bg-accent-green/5'
-            : 'border-border hover:border-border-strong',
+            ? 'border-brand bg-brand/5'
+            : 'border-border-strong hover:border-brand/50 hover:bg-brand/5',
           isDragReject && 'border-accent-red bg-accent-red/5',
         )}
       >
@@ -71,10 +71,10 @@ export function Dropzone({ onFile }: Props) {
               : { duration: 1.4, repeat: Infinity, ease: 'easeInOut' }
           }
           className={cn(
-            'flex h-14 w-14 items-center justify-center rounded-full',
+            'flex h-16 w-16 items-center justify-center rounded-2xl',
             isDragActive && !isDragReject
-              ? 'bg-accent-green/15 text-accent-green'
-              : 'bg-surface-card text-text-secondary',
+              ? 'bg-brand/15 text-brand'
+              : 'bg-brand/5 text-brand',
           )}
         >
           <UploadCloud className="h-7 w-7" />
@@ -97,7 +97,7 @@ export function Dropzone({ onFile }: Props) {
           <FileSpreadsheet className="mr-1 h-4 w-4 text-text-muted" />
           {REQUIRED_COLUMNS.map((col, i) => (
             <span key={col} className="flex items-center gap-1.5">
-              <span className="rounded-pill border border-border bg-surface-card px-2 py-0.5 text-xs text-text-secondary">
+              <span className="rounded-md border border-border bg-bg-base px-2 py-1 text-xs text-text-secondary">
                 {col}
               </span>
               {i < REQUIRED_COLUMNS.length - 1 && (

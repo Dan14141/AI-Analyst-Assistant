@@ -255,7 +255,7 @@ export function ExportPage() {
                                             className={cn(
                                                 'flex items-center justify-center gap-2 rounded-lg border px-3 py-2.5 text-sm transition-colors',
                                                 format === f.value
-                                                    ? 'border-accent-green/50 bg-accent-green/10 text-text-primary'
+                                                    ? 'border-brand/40 bg-brand/5 text-text-primary'
                                                     : 'border-border text-text-secondary hover:bg-surface-hover',
                                             )}
                                         >
@@ -278,7 +278,7 @@ export function ExportPage() {
                                             className={cn(
                                                 'flex items-center justify-center gap-2 rounded-lg border px-3 py-2.5 text-sm transition-colors',
                                                 !includePlan
-                                                    ? 'border-accent-green/50 bg-accent-green/10 text-text-primary'
+                                                    ? 'border-brand/40 bg-brand/5 text-text-primary'
                                                     : 'border-border text-text-secondary hover:bg-surface-hover',
                                             )}
                                         >
@@ -291,7 +291,7 @@ export function ExportPage() {
                                             className={cn(
                                                 'flex items-center justify-center gap-2 rounded-lg border px-3 py-2.5 text-sm transition-colors',
                                                 includePlan
-                                                    ? 'border-accent-green/50 bg-accent-green/10 text-text-primary'
+                                                    ? 'border-brand/40 bg-brand/5 text-text-primary'
                                                     : 'border-border text-text-secondary hover:bg-surface-hover',
                                             )}
                                         >
@@ -405,7 +405,7 @@ export function ExportPage() {
                                                                         className={cn(
                                                                             'flex cursor-pointer items-start gap-2.5 rounded-lg border px-3 py-2.5 transition-colors',
                                                                             checked
-                                                                                ? 'border-accent-green/50 bg-accent-green/10'
+                                                                                ? 'border-brand/40 bg-brand/5'
                                                                                 : 'border-border hover:bg-surface-hover',
                                                                         )}
                                                                     >

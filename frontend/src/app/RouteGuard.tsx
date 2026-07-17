@@ -31,7 +31,7 @@ export function RouteGuard({ children, requiresData = false, requiresGraph = fal
             <Card>
                 <CardBody className="flex items-center justify-center py-16">
                     <div className="flex items-center gap-3">
-                        <div className="h-6 w-6 animate-spin rounded-full border-2 border-accent-green border-t-transparent" />
+                        <div className="h-6 w-6 animate-spin rounded-full border-2 border-brand border-t-transparent" />
                         <span className="text-text-secondary">Загрузка данных...</span>
                     </div>
                 </CardBody>

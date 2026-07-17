@@ -139,7 +139,7 @@ export function UploadPage() {
     if (loadingStatus) {
         return (
             <div className="flex items-center justify-center py-16">
-                <div className="h-8 w-8 animate-spin rounded-full border-4 border-accent-green border-t-transparent" />
+                <div className="h-8 w-8 animate-spin rounded-full border-4 border-brand border-t-transparent" />
                 <span className="ml-3 text-text-secondary">Проверка состояния данных...</span>
             </div>
         )
@@ -185,31 +185,8 @@ export function UploadPage() {
                     <motion.div key="uploading" {...fade}>
                         <Card>
                             <CardBody className="flex flex-col items-center justify-center gap-5 py-14 text-center">
-                                <svg width="0" height="0" className="absolute" aria-hidden>
-                                    <filter id="chroma-key" colorInterpolationFilters="sRGB">
-                                        <feColorMatrix
-                                            type="matrix"
-                                            values="1 0 0 0 0
-                              0 1 0 0 0
-                              0 0 1 0 0
-                              0.8 -1 0.8 0 0.2"
-                                        />
-                                    </filter>
-                                </svg>
-
-                                <div
-                                    className="relative flex h-44 w-44 items-center justify-center overflow-hidden rounded-card border border-border"
-                                    style={{
-                                        background:
-                                            'radial-gradient(circle at 50% 42%, rgba(33,160,56,0.14), var(--bg-elevated) 70%)',
-                                    }}
-                                >
-                                    <img
-                                        src="/meme-uiia.gif"
-                                        alt="Идёт загрузка"
-                                        className="h-full w-full object-contain"
-                                        style={{ filter: 'url(#chroma-key)' }}
-                                    />
+                                <div className="grid h-20 w-20 place-items-center rounded-2xl border border-brand/10 bg-brand/5" role="status" aria-label="Идёт загрузка">
+                                    <span className="h-9 w-9 animate-spin rounded-full border-[3px] border-brand/20 border-t-brand" aria-hidden="true" />
                                 </div>
 
                                 <div className="space-y-1">

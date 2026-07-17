@@ -7,28 +7,33 @@ export default {
         // Все значения — через CSS-переменные из src/styles/tokens.css.
         // Никаких хардкод-хексов в компонентах фич.
         bg: {
-          base: 'var(--bg-base)',
-          elevated: 'var(--bg-elevated)',
+          base: 'rgb(var(--bg-base-rgb) / <alpha-value>)',
+          elevated: 'rgb(var(--bg-elevated-rgb) / <alpha-value>)',
         },
         surface: {
-          card: 'var(--surface-card)',
-          hover: 'var(--surface-hover)',
+          card: 'rgb(var(--surface-card-rgb) / <alpha-value>)',
+          hover: 'rgb(var(--surface-hover-rgb) / <alpha-value>)',
         },
         border: {
-          DEFAULT: 'var(--border-subtle)',
-          strong: 'var(--border-strong)',
+          DEFAULT: 'rgb(var(--border-subtle-rgb) / <alpha-value>)',
+          strong: 'rgb(var(--border-strong-rgb) / <alpha-value>)',
         },
         text: {
-          primary: 'var(--text-primary)',
-          secondary: 'var(--text-secondary)',
-          muted: 'var(--text-muted)',
+          primary: 'rgb(var(--text-primary-rgb) / <alpha-value>)',
+          secondary: 'rgb(var(--text-secondary-rgb) / <alpha-value>)',
+          muted: 'rgb(var(--text-muted-rgb) / <alpha-value>)',
+        },
+        brand: {
+          DEFAULT: 'rgb(var(--brand-primary-rgb) / <alpha-value>)',
+          hover: 'rgb(var(--brand-hover-rgb) / <alpha-value>)',
+          navy: 'rgb(var(--brand-navy-rgb) / <alpha-value>)',
         },
         accent: {
-          lime: 'var(--accent-lime)',
-          green: 'var(--accent-green)',
-          blue: 'var(--accent-blue)',
-          amber: 'var(--accent-amber)',
-          red: 'var(--accent-red)',
+          lime: 'rgb(var(--brand-primary-rgb) / <alpha-value>)',
+          green: 'rgb(var(--accent-green-rgb) / <alpha-value>)',
+          blue: 'rgb(var(--accent-blue-rgb) / <alpha-value>)',
+          amber: 'rgb(var(--accent-amber-rgb) / <alpha-value>)',
+          red: 'rgb(var(--accent-red-rgb) / <alpha-value>)',
         },
       },
       borderRadius: {
@@ -36,12 +41,12 @@ export default {
         pill: 'var(--radius-pill)',
       },
       fontFamily: {
-        sans: ['Manrope', 'Inter', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'Segoe UI', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       boxShadow: {
-        card: '0 1px 0 0 rgba(255,255,255,0.04) inset, 0 8px 30px -12px rgba(0,0,0,0.6)',
-        glow: '0 0 0 1px var(--accent-green), 0 0 24px -4px var(--accent-green)',
+        card: 'var(--shadow-card)',
+        dialog: 'var(--shadow-dialog)',
       },
       keyframes: {
         'fade-in': {

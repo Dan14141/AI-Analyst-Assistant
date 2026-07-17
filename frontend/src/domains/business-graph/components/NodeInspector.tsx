@@ -97,7 +97,7 @@ export function NodeInspector({ node, nodes, edges, onClose, onToggleDerived }: 
               className={cn(
                 'rounded-lg border px-3 py-2 text-sm transition-colors',
                 !isDerived
-                  ? 'border-accent-green/50 bg-accent-green/10 text-text-primary'
+                  ? 'border-brand/50 bg-brand/10 text-text-primary'
                   : 'border-border text-text-secondary hover:bg-surface-hover',
               )}
             >

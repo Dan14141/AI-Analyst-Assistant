@@ -73,7 +73,7 @@ function IndicatorNodeImpl({ data, selected }: NodeProps) {
                             производная
                         </span>
                     ) : (
-                        <span className="shrink-0 rounded-pill border border-border bg-white/5 px-1.5 py-0.5 text-[10px] font-medium text-text-muted">
+                        <span className="shrink-0 rounded-pill border border-border bg-bg-elevated px-1.5 py-0.5 text-[10px] font-medium text-text-muted">
                             базовая
                         </span>
                     )}
@@ -95,7 +95,7 @@ function IndicatorNodeImpl({ data, selected }: NodeProps) {
             <Handle
                 type="source"
                 position={Position.Right}
-                className="!h-2.5 !w-2.5 !border-border-strong !bg-accent-green"
+                className="!h-2.5 !w-2.5 !border-border-strong !bg-brand"
             />
         </motion.div>
     )

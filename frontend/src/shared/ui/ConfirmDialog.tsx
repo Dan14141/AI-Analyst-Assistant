@@ -38,7 +38,7 @@ const iconBg: Record<DialogVariant, string> = {
 
 /**
  * Готовый диалог подтверждения действия.
- * Стилизован под тёмную «дата-центр» тему проекта.
+ * Использует семантические цвета общей темы.
  */
 export function ConfirmDialog({
   open,

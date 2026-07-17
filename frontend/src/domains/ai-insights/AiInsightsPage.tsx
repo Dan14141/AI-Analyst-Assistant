@@ -33,11 +33,11 @@ function NewsProgressBar({ phase, message }: { phase: NewsPhase; message: string
     const progress = phase === 'DONE' ? 100 : Math.max(5, (currentIndex / (PHASE_ORDER.length - 1)) * 100)
 
     return (
-        <Card className="border-accent-green/20">
+        <Card className="border-brand/20">
             <CardBody className="pt-5">
                 <div className="flex items-center gap-3 mb-3">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent-green/10">
-                        <Loader2 className="h-4 w-4 text-accent-green animate-spin" />
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand/10">
+                        <Loader2 className="h-4 w-4 text-brand animate-spin" />
                     </div>
                     <div className="min-w-0 flex-1">
                         <p className="text-sm font-medium text-text-primary">{message}</p>
@@ -45,7 +45,7 @@ function NewsProgressBar({ phase, message }: { phase: NewsPhase; message: string
                 </div>
                 <div className="h-1.5 w-full overflow-hidden rounded-full bg-surface-hover">
                     <div
-                        className="h-full rounded-full bg-gradient-to-r from-accent-green to-accent-lime transition-all duration-500 ease-out"
+                        className="h-full rounded-full bg-brand transition-all duration-500 ease-out"
                         style={{ width: progress + '%' }}
                     />
                 </div>
@@ -60,7 +60,7 @@ function NewsProgressBar({ phase, message }: { phase: NewsPhase; message: string
                                 className={
                                     'flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs transition-all duration-300 ' +
                                     (isActive
-                                        ? 'bg-accent-green/15 text-accent-green font-medium'
+                                        ? 'bg-brand/15 text-brand font-medium'
                                         : isDone
                                             ? 'bg-surface-hover text-text-secondary'
                                             : 'text-text-muted')
@@ -193,7 +193,7 @@ export function AiInsightsPage() {
                         <h3 className="flex items-center gap-2 text-sm font-semibold tracking-wide text-text-primary">
                             <Newspaper className="h-4 w-4 text-text-secondary" />
                             Новости ({news.length})
-                            {isInProgress && <span className="ml-2 text-xs text-accent-green">{newsPhaseMessage}</span>}
+                            {isInProgress && <span className="ml-2 text-xs text-brand">{newsPhaseMessage}</span>}
                             {newsError && !hasNews && !isInProgress && <span className="ml-2 text-xs text-accent-red">(ошибка)</span>}
                         </h3>
                         <div className="flex items-center gap-2 flex-wrap">
@@ -264,7 +264,7 @@ export function AiInsightsPage() {
                                 <Tag tone="amber">аномалии заменены</Tag>
                             )}
                         </h3>
-                        <div className="flex items-center gap-2">
+                        <div className="flex flex-wrap items-center gap-2">
                             <div className="flex items-center gap-2">
                                 <span className="text-xs text-text-secondary">σ:</span>
                                 <input

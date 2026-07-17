@@ -1,6 +1,7 @@
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
-import { LogOut, Lock } from 'lucide-react'
+import { LogOut, Lock, UserRound, ChartNoAxesCombined } from 'lucide-react'
+import { BankBrand } from '@/shared/ui/BankBrand'
 import { AmbientBackground } from './AmbientBackground'
 import { NAV } from './navigation'
 import { cn } from '@/shared/lib/cn'
@@ -30,21 +31,20 @@ export function AppLayout() {
     }
 
     return (
-        <div className="flex min-h-screen text-text-primary">
+        <div className="app-shell min-h-screen text-text-primary">
             <AmbientBackground />
 
-            <aside className="sticky top-0 hidden h-screen w-64 shrink-0 flex-col border-r border-border bg-bg-elevated/60 p-4 backdrop-blur-sm lg:flex">
-                <div className="mb-8 flex items-center gap-2.5 px-2">
-                    <div className="grid h-9 w-9 place-items-center rounded-lg bg-accent-green/15 text-accent-lime">
-                        <span className="text-lg font-extrabold">С</span>
-                    </div>
-                    <div className="leading-tight">
-                        <div className="text-sm font-bold">Планирование доходов</div>
-                        <div className="text-[11px] text-text-secondary">интеллектуальный помощник</div>
+            <aside className="app-sidebar">
+                <div className="sidebar-brand">
+                    <BankBrand />
+                    <div className="sidebar-product">
+                        <div>Планирование доходов</div>
+                        <div className="sidebar-product-caption">интеллектуальный помощник</div>
                     </div>
                 </div>
 
-                <nav className="flex flex-1 flex-col gap-1">
+                <div className="sidebar-section-label">Рабочее пространство</div>
+                <nav className="sidebar-nav" aria-label="Основная навигация">
                     {navEntries.map((entry) => {
                         const Icon = entry.icon
                         const disabled = isEntryDisabled(entry)
@@ -59,11 +59,11 @@ export function AppLayout() {
                                     end={entry.to === '/'}
                                     className={({ isActive: active }) =>
                                         cn(
-                                            'flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors w-full',
-                                            disabled && 'opacity-40 cursor-not-allowed pointer-events-none',
+                                            'sidebar-link',
+                                            disabled && 'sidebar-link-disabled cursor-not-allowed pointer-events-none',
                                             active || isActive
-                                                ? 'bg-surface-card text-text-primary'
-                                                : 'text-text-secondary hover:bg-surface-hover hover:text-text-primary',
+                                                ? 'sidebar-link-active'
+                                                : '',
                                         )
                                     }
                                     onClick={(e) => {
@@ -74,18 +74,18 @@ export function AppLayout() {
                                 >
                                     <Icon
                                         className={cn(
-                                            'h-[18px] w-[18px]',
-                                            isActive || location.pathname === entry.to ? 'text-accent-lime' : '',
+                                            'h-[19px] w-[19px] shrink-0',
+                                            isActive || location.pathname === entry.to ? 'sidebar-icon-active' : '',
                                         )}
                                         strokeWidth={1.75}
                                     />
-                                    <span className="flex flex-col">
+                                    <span className="flex min-w-0 flex-col gap-1">
                                         <span className="font-medium">{entry.label}</span>
-                                        <span className="text-[11px] text-text-muted">
-                                            {disabled ? '⚠️ данные не загружены' : entry.hint}
+                                        <span className="sidebar-link-hint">
+                                            {disabled ? 'Данные не загружены' : entry.hint}
                                         </span>
                                     </span>
-                                    {disabled && <Lock className="h-3.5 w-3.5 text-text-muted ml-auto" />}
+                                    {disabled && <Lock className="h-3.5 w-3.5 shrink-0 ml-auto" />}
                                 </NavLink>
                             </div>
                         )
@@ -93,17 +93,18 @@ export function AppLayout() {
                 </nav>
 
                 {user && (
-                    <div className="mt-4 flex items-center justify-between rounded-lg border border-border bg-surface-card px-3 py-2.5">
-                        <div className="leading-tight">
-                            <div className="text-sm font-medium">{user.login}</div>
-                            <div className="text-[11px] text-text-secondary">
+                    <div className="sidebar-user">
+                        <div className="sidebar-avatar" aria-hidden="true"><UserRound className="h-4 w-4" /></div>
+                        <div className="min-w-0 flex-1 leading-tight">
+                            <div className="truncate text-sm font-medium">{user.login}</div>
+                            <div className="sidebar-user-role">
                                 {user.role === 'admin' ? 'Администратор' : 'Менеджер'}
                             </div>
                         </div>
                         <button
                             onClick={logout}
                             aria-label="Выйти"
-                            className="text-text-muted hover:text-accent-red"
+                            className="sidebar-logout"
                         >
                             <LogOut className="h-4 w-4" />
                         </button>
@@ -112,6 +113,13 @@ export function AppLayout() {
             </aside>
 
             <main className="min-w-0 flex-1">
+                <div className="workspace-bar">
+                    <div className="flex items-center gap-2.5">
+                        <ChartNoAxesCombined className="h-4 w-4 text-brand" aria-hidden="true" />
+                        <span>Планирование доходов</span>
+                    </div>
+                    <span className="workspace-bar-caption">Банковская аналитика</span>
+                </div>
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={location.pathname}
@@ -119,7 +127,7 @@ export function AppLayout() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={reduced ? undefined : { opacity: 0, y: -8 }}
                         transition={{ duration: 0.25, ease: 'easeOut' }}
-                        className="mx-auto max-w-[1400px] px-5 py-6 md:px-8"
+                        className="workspace-content mx-auto max-w-[1600px] px-4 py-6 md:px-8 md:py-8"
                     >
                         <Outlet />
                     </motion.div>

@@ -368,7 +368,7 @@ export function BusinessGraphPage() {
                                     pannable
                                     zoomable
                                     nodeColor={miniMapNodeColor}
-                                    maskColor="rgba(7,16,12,0.7)"
+                                    maskColor="rgba(225,234,246,0.65)"
                                     style={{
                                         background: 'var(--surface-card)',
                                         border: '1px solid var(--border-subtle)',

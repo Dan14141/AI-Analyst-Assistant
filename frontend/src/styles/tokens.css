@@ -1,48 +1,54 @@
-/* ============================================================
-   Дизайн-токены — единственный источник правды по цвету/радиусам.
-   Раздел 2 мастер-промпта: тёмная «дата-центр» эстетика,
-   зелёный бренд-акцент, лаймовый акцент заголовков.
-   Компоненты фич НЕ хардкодят хексы — только эти переменные
-   (через Tailwind-токены из tailwind.config.js).
-   ============================================================ */
+/* Светлая банковская тема: нейтральные поверхности и синий акцент ВТБ.
+   RGB-каналы позволяют Tailwind корректно применять /5, /10, /50 и т. д.
+   Полные CSS-цвета используются в SVG, картах и React Flow. */
 :root {
-  /* Фон */
-  --bg-base: #07100c; /* почти чёрный с зелёным подтоном */
-  --bg-elevated: #0a140f;
+  color-scheme: light;
 
-  /* Радиальные свечения по углам (см. AmbientBackground) */
-  --glow-green: rgba(27, 94, 63, 0.32);
-  --glow-blue: rgba(14, 58, 95, 0.30);
+  --bg-base-rgb: 244 247 251;
+  --bg-elevated-rgb: 238 243 249;
+  --surface-card-rgb: 255 255 255;
+  --surface-hover-rgb: 242 246 252;
+  --border-subtle-rgb: 222 230 240;
+  --border-strong-rgb: 190 204 223;
+  --text-primary-rgb: 24 43 77;
+  --text-secondary-rgb: 80 98 125;
+  --text-muted-rgb: 95 111 135;
 
-  /* Поверхности */
-  --surface-card: #0e1813;
-  --surface-hover: #122019;
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-strong: rgba(255, 255, 255, 0.16);
+  --brand-primary-rgb: 0 87 214;
+  --brand-hover-rgb: 0 67 173;
+  --brand-navy-rgb: 10 41 105;
+  --accent-green-rgb: 22 124 89;
+  --accent-blue-rgb: 0 119 166;
+  --accent-amber-rgb: 155 99 13;
+  --accent-red-rgb: 192 54 73;
 
-  /* Текст */
-  --text-primary: #f3f6f4;
-  --text-secondary: #94a39a;
-  --text-muted: #5d6b63;
+  --bg-base: rgb(var(--bg-base-rgb));
+  --bg-elevated: rgb(var(--bg-elevated-rgb));
+  --surface-card: rgb(var(--surface-card-rgb));
+  --surface-hover: rgb(var(--surface-hover-rgb));
+  --border-subtle: rgb(var(--border-subtle-rgb));
+  --border-strong: rgb(var(--border-strong-rgb));
+  --text-primary: rgb(var(--text-primary-rgb));
+  --text-secondary: rgb(var(--text-secondary-rgb));
+  --text-muted: rgb(var(--text-muted-rgb));
+  --brand-primary: rgb(var(--brand-primary-rgb));
+  --brand-navy: rgb(var(--brand-navy-rgb));
+  --accent-green: rgb(var(--accent-green-rgb));
+  --accent-blue: rgb(var(--accent-blue-rgb));
+  --accent-amber: rgb(var(--accent-amber-rgb));
+  --accent-red: rgb(var(--accent-red-rgb));
+  /* Совместимость с существующими цветовыми вариантами компонентов. */
+  --accent-lime: var(--brand-primary);
 
-  /* Акценты */
-  --accent-lime: #c8e04b; /* заголовки, активные состояния */
-  --accent-green: #21a038; /* основной бренд, primary-кнопки */
-  --accent-blue: #4fc3f7; /* вторичные метки/категории */
-  --accent-amber: #f2c94c; /* числовые акценты / предупреждения */
-  --accent-red: #ff6b6b; /* ошибки, отрицательная динамика */
-
-  /* Радиусы */
-  --radius-card: 16px;
+  --radius-card: 12px;
   --radius-pill: 999px;
+  --focus-ring: 0 0 0 2px var(--surface-card), 0 0 0 4px rgb(var(--brand-primary-rgb) / 0.55);
+  --shadow-card: 0 2px 8px -4px rgb(24 43 77 / 0.10);
+  --shadow-dialog: 0 24px 80px -20px rgb(10 41 105 / 0.25);
 
-  /* Кольцо фокуса (видимый keyboard focus — обязателен) */
-  --focus-ring: 0 0 0 2px var(--bg-base), 0 0 0 4px var(--accent-lime);
-
-  /* Семантика операторов графа */
   --op-add: var(--accent-green);
   --op-sub: var(--accent-red);
   --op-mul: var(--accent-blue);
   --op-div: var(--accent-amber);
-  --op-pct: var(--accent-lime);
+  --op-pct: var(--brand-primary);
 }

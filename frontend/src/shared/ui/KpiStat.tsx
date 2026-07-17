@@ -16,16 +16,16 @@ interface Props {
 export function KpiStat({ label, value, unit, fractionDigits = 0, deltaPct, icon }: Props) {
   const positive = (deltaPct ?? 0) >= 0
   return (
-    <Card className="p-4">
+    <Card className="p-5">
       <div className="flex items-start justify-between">
-        <span className="text-xs uppercase tracking-wide text-text-secondary">{label}</span>
-        {icon && <span className="text-text-muted">{icon}</span>}
+        <span className="text-xs font-medium text-text-secondary">{label}</span>
+        {icon && <span className="rounded-lg bg-brand/5 p-2 text-brand">{icon}</span>}
       </div>
       <div className="mt-2 flex items-baseline gap-1.5">
         <AnimatedNumber
           value={value}
           fractionDigits={fractionDigits}
-          className="tabular text-2xl font-bold text-text-primary"
+          className="tabular text-[28px] font-semibold tracking-tight text-text-primary"
         />
         {unit && <span className="text-sm text-text-secondary">{unit}</span>}
       </div>

@@ -252,7 +252,7 @@ export function OverviewPage() {
             />
 
             {/* Фильтры графика */}
-            <div className="mb-4 flex flex-wrap items-center gap-3">
+            <div className="mb-5 flex flex-wrap items-center gap-3 rounded-card border border-border bg-surface-card px-5 py-3.5">
                 <span className="text-sm text-text-secondary font-medium">Фильтры графика:</span>
                 <div className="flex items-center gap-2">
                     <span className="text-sm text-text-secondary">Регион:</span>
@@ -292,7 +292,7 @@ export function OverviewPage() {
                     <CardTitle>Динамика показателей</CardTitle>
                 </CardHeader>
                 <CardBody>
-                    <div className="mb-2 flex flex-wrap gap-3">
+                    <div className="mb-4 flex flex-wrap gap-x-4 gap-y-2.5 rounded-lg bg-bg-base px-3 py-3">
                         <span className="text-xs uppercase tracking-wide text-text-secondary mr-1">Показатели:</span>
                         {indicators.map(ind => (
                             <label key={ind} className="flex items-center gap-1.5 text-sm cursor-pointer">
@@ -300,7 +300,7 @@ export function OverviewPage() {
                                     type="checkbox"
                                     checked={visibleIndicators.has(ind)}
                                     onChange={() => toggleIndicator(ind)}
-                                    className="accent-accent-green h-4 w-4"
+                                    className="accent-brand h-4 w-4"
                                 />
                                 {ind}
                             </label>
@@ -339,7 +339,7 @@ export function OverviewPage() {
             <Card>
                 <CardHeader className="flex flex-wrap items-center justify-between gap-3">
                     <CardTitle>Сводная таблица данных</CardTitle>
-                    <div className="flex items-center gap-3">
+                    <div className="flex min-w-0 flex-wrap items-center gap-3">
                         <div className="relative">
                             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-text-muted" />
                             <Input
@@ -350,7 +350,7 @@ export function OverviewPage() {
                                 aria-label="Поиск в таблице"
                             />
                         </div>
-                        <span className="text-xs text-text-secondary whitespace-nowrap">
+                        <span className="text-xs text-text-secondary">
                             {filteredPivotData.length} строк · {allPeriods.length} периодов · {allSubjects.length} регионов · {allIndicators.length} показателей
                             {tableSearchTerm && ` (фильтр: "${tableSearchTerm}")`}
                             {isAdmin && ' · 🔑 Админ'}

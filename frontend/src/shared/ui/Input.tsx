@@ -6,8 +6,8 @@ export const Input = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputE
     <input
       ref={ref}
       className={cn(
-        'h-10 w-full rounded-lg border border-border bg-bg-elevated px-3 text-sm text-text-primary',
-        'placeholder:text-text-muted',
+        'h-10 w-full rounded-lg border border-border-strong bg-surface-card px-3 text-sm text-text-primary',
+        'placeholder:text-text-muted transition-colors hover:border-brand/40 focus:border-brand disabled:bg-bg-elevated disabled:cursor-not-allowed',
         className,
       )}
       {...props}
@@ -21,7 +21,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectHTMLAttributes<HTMLSel
     <select
       ref={ref}
       className={cn(
-        'h-10 w-full rounded-lg border border-border bg-bg-elevated px-3 text-sm text-text-primary',
+        'h-10 w-full rounded-lg border border-border-strong bg-surface-card px-3 text-sm text-text-primary transition-colors hover:border-brand/40 focus:border-brand disabled:bg-bg-elevated disabled:cursor-not-allowed',
         className,
       )}
       {...props}
@@ -41,7 +41,7 @@ interface FieldProps {
 export function Field({ label, htmlFor, hint, error, children }: FieldProps) {
   return (
     <label htmlFor={htmlFor} className="block space-y-1.5">
-      <span className="text-xs font-medium uppercase tracking-wide text-text-secondary">
+      <span className="block text-xs font-medium text-text-secondary">
         {label}
       </span>
       {children}

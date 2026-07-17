@@ -29,18 +29,7 @@ interface Props {
 }
 
 // Расширенная палитра
-const COLORS = [
-    '#4FC3F7',
-    '#FF6B6B',
-    '#C8E04B',
-    '#F2C94C',
-    '#9B8CFF',
-    '#21A038',
-    '#FF8A65',
-    '#7DD3FC',
-    '#34D399',
-    '#F472B6',
-]
+const COLORS = chartTheme.series
 
 export function ScenarioDetailView({ scenario }: Props) {
     const reduced = usePrefersReducedMotion()
@@ -435,9 +424,9 @@ export function ScenarioDetailView({ scenario }: Props) {
                 <span className="text-xs font-medium uppercase tracking-wide text-text-secondary mr-2">
                     Регионы (график):
                 </span>
-                <button onClick={selectAllRegions} className="text-xs text-accent-green hover:underline">Все</button>
+                <button onClick={selectAllRegions} className="text-xs text-brand hover:underline">Все</button>
                 {regions.map(region => (
-                    <label key={region} className="flex items-center gap-1.5 cursor-pointer text-sm text-text-primary hover:text-accent-green transition-colors">
+                    <label key={region} className="flex items-center gap-1.5 cursor-pointer text-sm text-text-primary hover:text-brand transition-colors">
                         <Checkbox
                             checked={selectedRegions.has(region)}
                             onChange={() => toggleRegion(region)}
@@ -454,9 +443,9 @@ export function ScenarioDetailView({ scenario }: Props) {
                 <span className="text-xs font-medium uppercase tracking-wide text-text-secondary mr-2">
                     Модели (график):
                 </span>
-                <button onClick={selectAllModels} className="text-xs text-accent-green hover:underline">Все</button>
+                <button onClick={selectAllModels} className="text-xs text-brand hover:underline">Все</button>
                 {allModels.map(m => (
-                    <label key={m.name} className="flex items-center gap-1.5 cursor-pointer text-sm text-text-primary hover:text-accent-green transition-colors">
+                    <label key={m.name} className="flex items-center gap-1.5 cursor-pointer text-sm text-text-primary hover:text-brand transition-colors">
                         <Checkbox
                             checked={selectedModels.has(m.name)}
                             onChange={() => toggleModel(m.name)}
@@ -658,10 +647,10 @@ export function ScenarioDetailView({ scenario }: Props) {
                                 />
                                 <Legend />
 
-                                <Bar dataKey="actual" fill={chartTheme.blue} name="Факт" radius={[3, 3, 0, 0]} />
-                                <Bar dataKey="forecast" fill="#004524" name="Прогноз" radius={[3, 3, 0, 0]}>
+                                <Bar dataKey="actual" fill={chartTheme.primary} name="Факт" radius={[3, 3, 0, 0]} />
+                                <Bar dataKey="forecast" fill={chartTheme.forecast} name="Прогноз" radius={[3, 3, 0, 0]}>
                                     {stdChartData.map((entry, index) => (
-                                        <Cell key={`cell-${index}`} fill={entry.isForecast ? "#004524" : "#004524"} />
+                                        <Cell key={`cell-${index}`} fill={entry.isForecast ? chartTheme.forecast : chartTheme.forecast} />
                                     ))}
                                 </Bar>
 
@@ -675,7 +664,7 @@ export function ScenarioDetailView({ scenario }: Props) {
                                         const bandwidth = xAxis.scale.bandwidth ? xAxis.scale.bandwidth() : 60
                                         const offset = bandwidth / 2 * 1.4
                                         const tickWidth = 10
-                                        const ciColor = '#FFFFFF'
+                                        const ciColor = chartTheme.ink
 
                                         return stdChartData.map((entry, index) => {
                                             if (!entry.isForecast || entry.forecast === null || entry.forecast === undefined) return null
@@ -723,7 +712,7 @@ export function ScenarioDetailView({ scenario }: Props) {
                     </div>
                     <p className="mt-2 text-xs text-text-muted">
                         Модель: {selectedStdModel}. Регион: {selectedStdRegion}.
-                        Белые пунктирные линии с чёрточками — доверительный интервал (z = {confidenceZ}).
+                        Пунктирные линии с чёрточками — доверительный интервал (z = {confidenceZ}).
                         СКО: {scenario.stdDevByRegion?.[selectedStdRegion] !== undefined ? formatNumber(scenario.stdDevByRegion[selectedStdRegion], 2) : '—'}
                     </p>
                 </CardBody>

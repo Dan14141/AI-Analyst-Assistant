@@ -1,30 +1,32 @@
-/* Тема для recharts. Это часть дизайн-системы (не фича) — здесь
-   допустимы конкретные значения цветов, синхронные с tokens.css,
-   т.к. SVG-графики требуют конкретных цветов, а не CSS-переменных. */
+/* Светлая тема графиков. Семантические цвета синхронны с tokens.css;
+   серии различимы на белой поверхности, включая доверительные интервалы. */
 export const chartTheme = {
-  green: '#21A038',
-  lime: '#C8E04B',
-  blue: '#4FC3F7',
-  amber: '#F2C94C',
-  red: '#FF6B6B',
-  grid: 'rgba(255,255,255,0.06)',
+  primary: '#0057D6',
+  forecast: '#6C9EE8',
+  ink: '#182B4D',
+  green: '#167C59',
+  lime: '#0057D6',
+  blue: '#0077A6',
+  amber: '#9B630D',
+  red: '#C03649',
+  grid: '#E6ECF4',
   axis: {
-    stroke: 'rgba(255,255,255,0.12)',
-    tick: { fill: '#94A39A', fontSize: 11 },
+    stroke: '#CBD6E5',
+    tick: { fill: '#5F6F87', fontSize: 11 },
     tickLine: false,
     axisLine: false,
   },
   tooltip: {
     contentStyle: {
-      background: '#0E1813',
-      border: '1px solid rgba(255,255,255,0.16)',
-      borderRadius: 12,
+      background: '#FFFFFF',
+      border: '1px solid #DEE6F0',
+      borderRadius: 8,
       fontSize: 12,
-      color: '#F3F6F4',
+      color: '#182B4D',
     },
-    labelStyle: { color: '#94A39A' },
-    cursor: { stroke: 'rgba(255,255,255,0.2)' },
+    labelStyle: { color: '#50627D', fontWeight: 500, marginBottom: 6 },
+    cursor: { stroke: '#BECCDF', fill: 'rgba(0,87,214,0.04)' },
   },
   /** Палитра для линий сравнения сценариев. */
-  series: ['#C8E04B', '#21A038', '#4FC3F7', '#F2C94C'],
+  series: ['#0057D6', '#0077A6', '#747AB0', '#9B630D', '#167C59', '#C03649', '#43648F', '#98668F', '#537D6D', '#9A684D'],
 } as const

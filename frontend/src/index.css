@@ -19,9 +19,16 @@
     margin: 0;
     background-color: var(--bg-base);
     color: var(--text-primary);
-    font-family: 'Manrope', 'Inter', system-ui, sans-serif;
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: rgb(var(--brand-primary-rgb) / 0.16);
+    color: var(--brand-navy);
   }
 
   /* Видимый keyboard-focus на всех интерактивных элементах. */
@@ -51,21 +58,178 @@
   }
 }
 
-/* React Flow — тёмная тема для контролов/мини-карты. Дефолтные кнопки
-   React Flow светлые (белый фон, тёмная иконка), из-за чего на нашем
-   тёмном фоне выглядят как белые квадраты. Перекрашиваем кнопки и их
-   SVG-иконки под палитру приложения. */
+/* Навигация и рабочее пространство. */
+.bank-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  font-family: Arial, 'Segoe UI', sans-serif;
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  line-height: 1;
+}
+
+.app-shell { display: flex; }
+.app-sidebar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 260px;
+  height: 100dvh;
+  padding: 30px 16px 18px;
+  overflow-y: auto;
+  background: var(--brand-navy);
+  color: #fff;
+  --focus-ring: 0 0 0 2px var(--brand-navy), 0 0 0 4px #89bcff;
+}
+.sidebar-brand { padding: 0 14px 28px; }
+.sidebar-product { margin-top: 22px; font-size: 13px; font-weight: 500; }
+.sidebar-product-caption { margin-top: 5px; color: #b1c5e7; font-size: 11px; font-weight: 400; }
+.sidebar-section-label {
+  padding: 19px 14px 12px;
+  border-top: 1px solid rgb(255 255 255 / 0.13);
+  color: #a8bfe4;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+.sidebar-nav { display: flex; flex: 1; flex-direction: column; gap: 6px; }
+.sidebar-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 62px;
+  padding: 11px 13px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: #d4e0f4;
+  font-size: 13px;
+  transition: background-color 160ms, color 160ms, border-color 160ms;
+}
+.sidebar-link:hover { background: rgb(255 255 255 / 0.07); color: #fff; }
+.sidebar-link-active, .sidebar-link-active:hover {
+  border-color: rgb(132 183 255 / 0.22);
+  background: #194580;
+  color: #fff;
+}
+.sidebar-link-active::before {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: 16px;
+  bottom: 16px;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: #83baff;
+}
+.sidebar-icon-active { color: #95c6ff; }
+.sidebar-link-hint { color: #adc3e5; font-size: 11px; font-weight: 400; }
+.sidebar-link-disabled { border-color: transparent; background: transparent; opacity: 0.48; }
+.sidebar-link-disabled::before { display: none; }
+.sidebar-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 28px;
+  padding: 18px 10px 0;
+  border-top: 1px solid rgb(255 255 255 / 0.15);
+}
+.sidebar-avatar { display: grid; width: 34px; height: 34px; flex-shrink: 0; place-items: center; border-radius: 50%; background: #25467f; color: #c7ddff; }
+.sidebar-user-role { margin-top: 5px; color: #b1c5e7; font-size: 11px; }
+.sidebar-logout { display: grid; width: 32px; height: 32px; flex-shrink: 0; place-items: center; border-radius: 6px; color: #b1c5e7; transition: background-color 160ms, color 160ms; }
+.sidebar-logout:hover { background: rgb(255 255 255 / 0.1); color: #fff; }
+.workspace-bar { display: flex; height: 64px; align-items: center; justify-content: space-between; gap: 16px; padding: 0 32px; border-bottom: 1px solid var(--border-subtle); background: var(--surface-card); color: var(--text-secondary); font-size: 12px; }
+.workspace-bar-caption { color: var(--text-muted); font-size: 11px; }
+
+/* Экран входа: спокойная брендовая панель и отдельная область формы. */
+.login-page { display: grid; min-height: 100dvh; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); }
+.login-intro { position: relative; display: flex; min-width: 0; flex-direction: column; justify-content: space-between; overflow: hidden; padding: 52px clamp(36px, 5vw, 80px) 32px; background: var(--brand-navy); color: #fff; }
+.login-intro::after { position: absolute; right: -180px; bottom: -200px; width: 520px; height: 520px; border: 1px solid rgb(142 187 255 / 0.12); border-radius: 50%; content: ''; pointer-events: none; }
+.login-intro-content { position: relative; z-index: 1; padding: 64px 0 48px; }
+.login-eyebrow { display: flex; align-items: center; gap: 9px; margin-bottom: 24px; color: #b9d2f6; font-size: 12px; }
+.login-intro h1 { font-size: clamp(36px, 3.5vw, 52px); font-weight: 500; line-height: 1.14; letter-spacing: -0.035em; }
+.login-intro-content > p { margin-top: 24px; color: #bdcfeb; font-size: 15px; line-height: 1.8; }
+.login-intro-footer { color: #afc5e7; font-size: 11px; }
+.login-illustration { position: relative; width: 100%; max-width: 440px; height: 185px; margin-top: 54px; color: #8ccaff; }
+.login-chart-grid { position: absolute; inset: 0; border-bottom: 1px solid rgb(167 202 251 / 0.25); background: repeating-linear-gradient(to top, transparent 0 44px, rgb(167 202 251 / 0.1) 44px 45px); }
+.login-chart-bars { position: absolute; inset: 0 8px; display: flex; align-items: flex-end; justify-content: space-between; gap: 14px; }
+.login-chart-bars span { width: 30px; height: 30%; border-radius: 4px 4px 0 0; background: #2860a8; }
+.login-chart-bars span:nth-child(2) { height: 42%; }
+.login-chart-bars span:nth-child(3) { height: 36%; }
+.login-chart-bars span:nth-child(4) { height: 60%; background: #3477cc; }
+.login-chart-bars span:nth-child(5) { height: 54%; background: #3477cc; }
+.login-chart-bars span:nth-child(6) { height: 79%; background: #4a90e2; }
+.login-chart-bars span:nth-child(7) { height: 94%; background: #69aafa; }
+.login-illustration svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.login-form-area { display: grid; place-items: center; padding: 48px; }
+.login-form-card { box-shadow: 0 8px 32px -16px rgb(24 43 77 / 0.13); }
+
+/* Таблицы сохраняют высоту строк, необходимую для виртуализации. */
+.workspace-content table { font-variant-numeric: tabular-nums; }
+.workspace-content thead th { color: var(--text-secondary); font-size: 11px; font-weight: 600; letter-spacing: 0.02em; }
+.workspace-content tbody tr:nth-child(even) { background-color: rgb(var(--bg-elevated-rgb) / 0.4); }
+.workspace-content tbody tr:nth-child(even) td.sticky { background-color: #f8fafd; }
+.workspace-content tbody tr:hover, .workspace-content tbody tr:hover td.sticky { background-color: #edf4ff; }
+.recharts-default-legend { font-size: 11px; line-height: 1.8; }
+.recharts-legend-item-text { color: var(--text-secondary) !important; }
+.recharts-default-tooltip { box-shadow: 0 8px 28px -8px rgb(24 43 77 / 0.18); }
+.recharts-tooltip-wrapper { z-index: 30; }
+
+@media (max-width: 1023px) {
+  .app-shell { flex-direction: column; }
+  .app-sidebar { position: static; display: grid; width: 100%; height: auto; grid-template-columns: 1fr auto; padding: 18px 20px 14px; overflow: visible; }
+  .sidebar-brand { display: flex; align-items: center; gap: 20px; padding: 0; }
+  .sidebar-brand .bank-brand { font-size: 28px; }
+  .sidebar-brand .bank-brand svg { width: 25px; }
+  .sidebar-product { margin-top: 0; }
+  .sidebar-section-label { display: none; }
+  .sidebar-user { grid-column: 2; grid-row: 1; margin: 0; padding: 0; border: 0; }
+  .sidebar-nav { grid-column: 1 / -1; flex-direction: row; gap: 6px; margin-top: 20px; padding-bottom: 3px; overflow-x: auto; }
+  .sidebar-nav > div { flex-shrink: 0; }
+  .sidebar-link { min-height: 42px; gap: 8px; padding: 10px 12px; font-size: 12px; }
+  .sidebar-link-hint { display: none; }
+  .sidebar-link-active::before { inset: auto 12px -1px; width: auto; height: 2px; }
+  .workspace-bar { height: 50px; }
+}
+@media (max-width: 767px) {
+  .login-page { grid-template-columns: 1fr; }
+  .login-intro { padding: 28px; }
+  .login-intro-content { padding: 28px 0 0; }
+  .login-intro h1 { font-size: 32px; }
+  .login-intro h1 br { display: none; }
+  .login-intro-content > p { margin-top: 12px; font-size: 13px; }
+  .login-eyebrow, .login-illustration, .login-intro-footer { display: none; }
+  .login-form-area { padding: 36px 24px; }
+}
+@media (max-width: 539px) {
+  .app-sidebar { padding: 16px 16px 12px; }
+  .sidebar-brand { gap: 12px; }
+  .sidebar-product { max-width: 135px; font-size: 11px; }
+  .sidebar-product-caption, .sidebar-avatar, .sidebar-user-role, .workspace-bar-caption { display: none; }
+  .sidebar-user { gap: 8px; max-width: 100px; }
+  .sidebar-user .text-sm { font-size: 12px; }
+  .workspace-bar { height: 44px; padding: 0 16px; }
+}
+
+/* React Flow: светлые контролы, читаемые рёбра и спокойная мини-карта. */
 .react-flow__controls {
-  box-shadow: 0 8px 30px -12px rgba(0, 0, 0, 0.6);
-  border-radius: 10px;
+  box-shadow: 0 3px 12px -4px rgb(24 43 77 / 0.18);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
   overflow: hidden;
 }
 
 .react-flow .react-flow__controls-button {
   background: var(--surface-card);
   border-bottom: 1px solid var(--border-subtle);
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
 }
 
 .react-flow .react-flow__controls-button:hover {
@@ -97,7 +261,7 @@
 }
 .react-flow__edge.selected .react-flow__edge-path {
   stroke-width: 4 !important;
-  filter: drop-shadow(0 0 4px rgba(243, 246, 244, 0.45));
+  filter: drop-shadow(0 0 3px rgb(var(--brand-primary-rgb) / 0.25));
 }
 
 /* Доверительный коридор прогноза YoY — пунктирные «усы» (как в документации:

@@ -11,17 +11,17 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variants: Record<Variant, string> = {
   primary:
-    'bg-accent-green text-[#06150b] hover:brightness-110 font-semibold disabled:opacity-50',
+    'bg-brand text-white hover:bg-brand-hover active:bg-brand-navy font-medium shadow-sm',
   secondary:
-    'bg-surface-card border border-border-strong text-text-primary hover:bg-surface-hover',
+    'bg-surface-card border border-border-strong text-text-primary hover:border-brand/40 hover:bg-surface-hover font-medium',
   ghost: 'text-text-secondary hover:text-text-primary hover:bg-surface-hover',
-  danger: 'bg-accent-red/15 text-accent-red border border-accent-red/30 hover:bg-accent-red/25',
+  danger: 'bg-accent-red/5 text-accent-red border border-accent-red/20 hover:bg-accent-red/10',
 }
 
 const sizes: Record<Size, string> = {
   sm: 'h-8 px-3 text-sm rounded-lg gap-1.5',
   md: 'h-10 px-4 text-sm rounded-lg gap-2',
-  lg: 'h-12 px-6 text-base rounded-xl gap-2',
+  lg: 'h-12 px-6 text-sm rounded-lg gap-2',
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(

@@ -23,13 +23,13 @@ export function Toggle({ checked, onChange, label, id, disabled = false }: Props
       <span
         className={cn(
           'relative h-5 w-10 shrink-0 rounded-pill border transition-colors',
-          checked ? 'border-accent-green/40 bg-accent-green/30' : 'border-border bg-white/5',
+          checked ? 'border-brand bg-brand' : 'border-border-strong bg-border-strong',
         )}
       >
         <span
           className={cn(
             'absolute left-0.5 top-1/2 h-4 w-4 -translate-y-1/2 rounded-full transition-transform',
-            checked ? 'translate-x-[18px] bg-accent-green' : 'translate-x-0 bg-text-muted',
+            checked ? 'translate-x-[18px] bg-white shadow-sm' : 'translate-x-0 bg-white shadow-sm',
           )}
         />
       </span>

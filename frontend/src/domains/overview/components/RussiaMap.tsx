@@ -10,7 +10,7 @@ interface Props {
     scenario?: Scenario
 }
 
-const ACCENT = '#21A038'
+const ACCENT = '#0057D6'
 
 function hexToRgba(hex: string, alpha: number): string {
     const r = parseInt(hex.slice(1, 3), 16)
@@ -21,7 +21,7 @@ function hexToRgba(hex: string, alpha: number): string {
 
 function fillFor(value: number, min: number, max: number): string {
     const t = max > min ? (value - min) / (max - min) : 1
-    const opacity = 0.18 + t * 0.72
+    const opacity = 0.06 + t * 0.34
     return hexToRgba(ACCENT, +opacity.toFixed(3))
 }
 
@@ -70,11 +70,11 @@ export function RussiaMap({ scenario }: Props) {
                             animate={{ backgroundColor: fillFor(r.value, min, max) }}
                             transition={{ duration: reduced ? 0 : 0.6, ease: 'easeOut' }}
                         >
-                            <div className="text-xs font-medium text-text-primary drop-shadow">{r.subject}</div>
-                            <div className="tabular mt-2 text-base font-semibold text-text-primary drop-shadow">
+                            <div className="text-xs font-medium text-text-primary">{r.subject}</div>
+                            <div className="tabular mt-2 text-base font-semibold text-text-primary">
                                 {formatNumber(r.value, 0)}
                             </div>
-                            <div className="mt-0.5 text-[11px] text-text-primary/70">руб</div>
+                            <div className="mt-0.5 text-[11px] text-text-primary">руб</div>
                         </motion.div>
                     ))}
                 </div>
@@ -84,7 +84,7 @@ export function RussiaMap({ scenario }: Props) {
                     <div
                         className="h-2 flex-1 rounded-pill"
                         style={{
-                            background: `linear-gradient(90deg, ${hexToRgba(ACCENT, 0.18)}, ${hexToRgba(ACCENT, 0.9)})`,
+                            background: `linear-gradient(90deg, ${hexToRgba(ACCENT, 0.06)}, ${hexToRgba(ACCENT, 0.4)})`,
                         }}
                     />
                     <span className="text-xs text-text-secondary">{formatNumber(max, 0)}</span>

@@ -13,8 +13,7 @@ interface ModalProps {
 
 /**
  * Базовое модальное окно с бэкдропом, анимацией и закрытием по Esc / клику вне.
- * Стилизация соответствует дизайн-системе проекта (тёмная тема, border-subtle,
- * surface-card, accent-green).
+ * Светлая поверхность и нейтральный синий фон соответствуют общей теме.
  */
 export function Modal({ open, onClose, children, maxWidth = 'max-w-md' }: ModalProps) {
   const overlayRef = useRef<HTMLDivElement>(null)
@@ -47,7 +46,7 @@ export function Modal({ open, onClose, children, maxWidth = 'max-w-md' }: ModalP
       ref={overlayRef}
       className={cn(
         'fixed inset-0 z-[9999] flex items-center justify-center p-4',
-        'bg-black/60 backdrop-blur-sm',
+        'bg-brand-navy/30 backdrop-blur-[3px]',
         'animate-[modal-overlay-in_0.2s_ease-out_both]',
       )}
       onClick={(e) => {
@@ -61,7 +60,7 @@ export function Modal({ open, onClose, children, maxWidth = 'max-w-md' }: ModalP
         className={cn(
           'relative w-full',
           maxWidth,
-          'rounded-card border border-border-strong bg-surface-card shadow-card',
+          'max-h-[calc(100dvh-2rem)] overflow-y-auto rounded-card border border-border bg-surface-card shadow-dialog',
           'animate-[modal-panel-in_0.25s_ease-out_both]',
         )}
       >

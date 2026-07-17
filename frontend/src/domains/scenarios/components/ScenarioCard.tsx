@@ -129,9 +129,9 @@ export function ScenarioCard({ scenario, selected, onToggleSelect, onDelete, isA
                                                 {d.contributionPct}%
                                             </span>
                                         </div>
-                                        <div className="h-1.5 w-full overflow-hidden rounded-pill bg-white/5">
+                                        <div className="h-1.5 w-full overflow-hidden rounded-pill bg-bg-elevated">
                                             <div
-                                                className="h-full rounded-pill bg-accent-green/70"
+                                                className="h-full rounded-pill bg-brand/70"
                                                 style={{ width: `${(d.contributionPct / maxContribution) * 100}%` }}
                                             />
                                         </div>

@@ -158,7 +158,7 @@ export function ScenarioForm({ onSuccess, onCancel }: ScenarioFormProps) {
                                 <button
                                     type="button"
                                     onClick={selectAllRegions}
-                                    className="text-xs text-accent-green hover:underline"
+                                    className="text-xs text-brand hover:underline"
                                 >
                                     Все
                                 </button>
@@ -175,7 +175,7 @@ export function ScenarioForm({ onSuccess, onCancel }: ScenarioFormProps) {
                                 {subjects.map(subject => (
                                     <label
                                         key={subject}
-                                        className="flex items-center gap-1.5 cursor-pointer text-sm text-text-primary hover:text-accent-green transition-colors p-1 rounded hover:bg-surface-hover"
+                                        className="flex items-center gap-1.5 cursor-pointer text-sm text-text-primary hover:text-brand transition-colors p-1 rounded hover:bg-surface-hover"
                                     >
                                         <Checkbox
                                             checked={selectedRegionsSet.has(subject)}

@@ -74,7 +74,7 @@ export function ScenarioDrivers({ scenarioId, region, targetIndicator }: Props) 
                     const isPositive = contribution >= 0
                     const Icon = isPositive ? TrendingUp : TrendingDown
                     const color = isPositive ? 'text-accent-green' : 'text-accent-red'
-                    const barColor = isPositive ? '#21A038' : '#FF6B6B'
+                    const barColor = isPositive ? 'var(--accent-green)' : 'var(--accent-red)'
 
                     return (
                         <motion.div
@@ -93,7 +93,7 @@ export function ScenarioDrivers({ scenarioId, region, targetIndicator }: Props) 
                                     {formatPercent(contribution)}
                                 </span>
                             </div>
-                            <div className="mt-2 h-1.5 w-full overflow-hidden rounded-pill bg-white/5">
+                            <div className="mt-2 h-1.5 w-full overflow-hidden rounded-pill bg-bg-elevated">
                                 <div
                                     className="h-full rounded-pill transition-all duration-500"
                                     style={{
